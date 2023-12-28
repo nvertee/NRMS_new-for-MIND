@@ -71,12 +71,12 @@ def preprocess(data, negative_sampling_num, data_name):  # clicking histories on
 
 
 if __name__ == '__main__':
-    behaviors_train = pd.read_csv('/kaggle/working/data/MINDsmall_train/behaviors.tsv', sep='\t', header=None)
+    behaviors_train = pd.read_csv('/kaggle/working/NRMS_new-for-MIND/data/MINDsmall_train/behaviors.tsv', sep='\t', header=None)
     behaviors_train.columns = ['ImpressionID', 'UserID', 'Time', 'Histories', 'Impressions']
     behaviors_train['Time'] = pd.to_datetime(behaviors_train['Time'], format='%m/%d/%Y %I:%M:%S %p')
     preprocess(behaviors_train, 4, 'training_data')
 
-    behaviors_valid = pd.read_csv('/kaggle/working/data/MINDlarge_dev/behaviors.tsv', sep='\t', header=None)
+    behaviors_valid = pd.read_csv('/kaggle/working/NRMS_new-for-MIND/data/MINDlarge_dev/behaviors.tsv', sep='\t', header=None)
     behaviors_valid.columns = ['ImpressionID', 'UserID', 'Time', 'Histories', 'Impressions']
     behaviors_valid['Time'] = pd.to_datetime(behaviors_valid['Time'], format='%m/%d/%Y %I:%M:%S %p')
     validation_users = behaviors_valid['UserID'].tolist()
