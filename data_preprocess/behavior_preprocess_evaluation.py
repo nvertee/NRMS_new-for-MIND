@@ -10,7 +10,8 @@ def generate_evaluation_data(data):  # clicking histories on the last day as lab
     n = 0
     for key in group_user.groups.keys():
         n += 1
-        print(n)
+        if (n%10000==0):
+            print(n)
         user_list = []
         user_list.append([key])
         user_data = group_user.get_group(key)
