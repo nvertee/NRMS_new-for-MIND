@@ -15,7 +15,8 @@ def preprocess(data, negative_sampling_num, data_name):  # clicking histories on
                 print(key+' is not in validation users.')
                 continue
         n += 1
-        print(n)
+        if (n%10000 == 0):
+            print(n)
         user_list = []
         user_list.append([key])
         user_data = group_user.get_group(key)
