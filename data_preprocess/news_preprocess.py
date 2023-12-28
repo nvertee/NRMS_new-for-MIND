@@ -43,7 +43,7 @@ def save_word_embeddings(column_words, newsid, file_name):
     word_vocab = list(set(np.concatenate(np.array(words))))
 
     "save word embeddings from glove"
-    f = open('../glove/glove_dict.pkl', 'rb')
+    f = open('/kaggle/working/glove_dict.pkl', 'rb')
     glove = pickle.load(f)
     glove_words = glove.keys()
     word_vocab = [i for i in word_vocab if i in glove_words]
@@ -68,8 +68,8 @@ def save_word_embeddings(column_words, newsid, file_name):
 
 
 def save_entity(newsdata):
-    entity1 = pd.read_csv('../MINDlarge_train/entity_embedding.vec', header=None, sep='\t')
-    entity2 = pd.read_csv('../MINDlarge_dev/entity_embedding.vec', header=None, sep='\t')
+    entity1 = pd.read_csv('/kaggle/working/data/MINDsmall_train/entity_embedding.vec', header=None, sep='\t')
+    entity2 = pd.read_csv('/kaggle/working/data/MINDsmall_dev/entity_embedding.vec', header=None, sep='\t')
     entity = pd.concat((entity1, entity2), axis=0)
     entity = entity.drop_duplicates()
     entity_IDs = entity[0].drop_duplicates()
@@ -111,9 +111,9 @@ def save_entity(newsdata):
 
 
 if __name__ == '__main__':
-    news_train = pd.read_csv('../MINDlarge_train/news.tsv', sep='\t', header=None)
+    news_train = pd.read_csv('/kaggle/working/data/MINDsmall_train/news.tsv', sep='\t', header=None)
     news_train.columns = ['NewsID', 'Category', 'SubCategory', 'Title', 'Abstract', 'URL', 'TitleEntities', 'AbstractEntities']
-    news_dev = pd.read_csv('../MINDlarge_dev/news.tsv', sep='\t', header=None)
+    news_dev = pd.read_csv('/kaggle/working/data/MINDsmall_dev/news.tsv', sep='\t', header=None)
     news_dev.columns = ['NewsID', 'Category', 'SubCategory', 'Title', 'Abstract', 'URL', 'TitleEntities', 'AbstractEntities']
     data = pd.concat((news_train, news_dev), axis=0)
     data = data.drop_duplicates()
