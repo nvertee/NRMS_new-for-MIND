@@ -6,56 +6,56 @@ import numpy as np
 def parse_args():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--training_data', type=str, default='/home/jenny/mind/data_preprocess/training_data.pkl',
+    parser.add_argument('--training_data', type=str, default='/kaggle/working/NRMS_new-for-MIND/training_data.pkl',
                         help='Input training data path')
 
     parser.add_argument('--validation_data', type=str,
-                        default='/home/jenny/mind/data_preprocess/validation_data.pkl',
+                        default='/kaggle/working/NRMS_new-for-MIND/validation_data.pkl',
                         help='Input validation data path')
 
-    parser.add_argument('--evaluation_data', type=str, default='/home/jenny/mind/data_preprocess/evaluation_data.pkl',
+    parser.add_argument('--evaluation_data', type=str, default='/kaggle/working/NRMS_new-for-MIND/evaluation_data.pkl',
                         help='Input validation data path')
 
-    parser.add_argument('--category_id', type=str, default='/home/jenny/mind/data_preprocess/category_id.pkl',
+    parser.add_argument('--category_id', type=str, default='/kaggle/working/NRMS_new-for-MIND/category_id.pkl',
                         help='category_id dictionary')
 
-    parser.add_argument('--subcategory_id', type=str, default='/home/jenny/mind/data_preprocess/subcategory_id.pkl',
+    parser.add_argument('--subcategory_id', type=str, default='/kaggle/working/NRMS_new-for-MIND/subcategory_id.pkl',
                         help='subcategory_id dictionary')
 
-    parser.add_argument('--TitleWord_id', type=str, default='/home/jenny/mind/data_preprocess/TitleWord_id.pkl',
+    parser.add_argument('--TitleWord_id', type=str, default='/kaggle/working/NRMS_new-for-MIND/TitleWord_id.pkl',
                         help='TitleWord_id dictionary')
 
-    parser.add_argument('--AbstractWord_id', type=str, default='/home/jenny/mind/data_preprocess/AbstractWord_id.pkl',
+    parser.add_argument('--AbstractWord_id', type=str, default='/kaggle/working/NRMS_new-for-MIND/AbstractWord_id.pkl',
                         help='AbstractWord_id.pkl')
 
-    parser.add_argument('--EntityID_id', type=str, default='/home/jenny/mind/data_preprocess/EntityID_id.pkl',
+    parser.add_argument('--EntityID_id', type=str, default='/kaggle/working/NRMS_new-for-MIND/EntityID_id.pkl',
                         help='EntityID_id dictionary')
 
-    parser.add_argument('--TitleWordId_embeddings', type=str, default='/home/jenny/mind/data_preprocess/TitleWordId_embeddings.npy',
+    parser.add_argument('--TitleWordId_embeddings', type=str, default='/kaggle/working/NRMS_new-for-MIND/TitleWordId_embeddings.npy',
                         help='TitleWordId_embeddings matrix')
 
-    parser.add_argument('--AbstractWordId_embeddings', type=str, default='/home/jenny/mind/data_preprocess/AbstractWordId_embeddings.npy',
+    parser.add_argument('--AbstractWordId_embeddings', type=str, default='/kaggle/working/NRMS_new-for-MIND/AbstractWordId_embeddings.npy',
                         help='AbstractWordId_embeddings matrix')
 
-    parser.add_argument('--EntityId_embeddings', type=str, default='/home/jenny/mind/data_preprocess/EntityId_embeddings.npy',
+    parser.add_argument('--EntityId_embeddings', type=str, default='/kaggle/working/NRMS_new-for-MIND/EntityId_embeddings.npy',
                         help='EntityId_embeddings matrix')
 
-    parser.add_argument('--newsID_categoryID', type=str, default='/home/jenny/mind/data_preprocess/newsID_categoryID.pkl',
+    parser.add_argument('--newsID_categoryID', type=str, default='/kaggle/working/NRMS_new-for-MIND/newsID_categoryID.pkl',
                         help='newsID_categoryID dictionary')
 
-    parser.add_argument('--newsID_subcategoryID', type=str, default='/home/jenny/mind/data_preprocess/newsID_subcategoryID.pkl',
+    parser.add_argument('--newsID_subcategoryID', type=str, default='/kaggle/working/NRMS_new-for-MIND/newsID_subcategoryID.pkl',
                         help='newsID_subcategoryID dictionary')
 
-    parser.add_argument('--newsID_TitleWordID', type=str, default='/home/jenny/mind/data_preprocess/newsID_TitleWordID.pkl',
+    parser.add_argument('--newsID_TitleWordID', type=str, default='/kaggle/working/NRMS_new-for-MIND/newsID_TitleWordID.pkl',
                         help='newsID_TitleWordId dictionary')
 
-    parser.add_argument('--newsID_AbstractWordID', type=str, default='/home/jenny/mind/data_preprocess/newsID_AbstractWordID.pkl',
+    parser.add_argument('--newsID_AbstractWordID', type=str, default='/kaggle/working/NRMS_new-for-MIND/newsID_AbstractWordID.pkl',
                         help='newsID_AbstractWordId dictionary')
 
-    parser.add_argument('--newsID_titleEntityId_conf', type=str, default='/home/jenny/mind/data_preprocess/newsID_titleEntityId_conf.pkl',
+    parser.add_argument('--newsID_titleEntityId_conf', type=str, default='/kaggle/working/NRMS_new-for-MIND/newsID_titleEntityId_conf.pkl',
                         help='newsID_titleEntityId dictionary')
 
-    parser.add_argument('--newsID_abstractEntityId_conf', type=str, default='/home/jenny/mind/data_preprocess/newsID_abstractEntityId_conf.pkl',
+    parser.add_argument('--newsID_abstractEntityId_conf', type=str, default='/kaggle/working/NRMS_new-for-MIND/newsID_abstractEntityId_conf.pkl',
                         help='newsID_abstractEntityId dictionary')
 
     parser.add_argument('--num_head_text', type=int, default=16,
@@ -91,7 +91,7 @@ def parse_args():
     parser.add_argument('--final_attn_vector_size', type=int, default=32,
                         help='dim of attn vector for encoding a news')
 
-    parser.add_argument('--batch_size', type=int, default=1,
+    parser.add_argument('--batch_size', type=int, default=32,
                         help='batch size of training')
 
     parser.add_argument('--model_name', type=str, default='NRMS_new.pkl', help='the name of trained model')
