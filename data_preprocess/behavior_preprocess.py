@@ -10,7 +10,7 @@ def preprocess(data, negative_sampling_num, data_name):  # clicking histories on
     n = 0
     for key in group_user.groups.keys():
         if data_name == 'validation_data':
-            print('generating validation data')
+            #print('generating validation data')
             if key not in validation_users:
                 print(key+' is not in validation users.')
                 continue
