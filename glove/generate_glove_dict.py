@@ -18,6 +18,6 @@ def loadGloveModel(File):
 
 
 if __name__ == '__main__':
-    glove = loadGloveModel('glove.840B.300d.txt')
+    glove = loadGloveModel('/kaggle/working/data/glove/glove.840B.300d.txt')
     f = open('glove_dict.pkl', 'wb')
     pickle.dump(glove, f)
