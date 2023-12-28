@@ -94,10 +94,10 @@ def parse_args():
     parser.add_argument('--batch_size', type=int, default=32,
                         help='batch size of training')
 
-    parser.add_argument('--model_name', type=str, default='NRMS_new.pkl', help='the name of trained model')
+    parser.add_argument('--model_name', type=str, default='/kaggle/working/NRMS_new-for-MIND/NRMS_new.pkl', help='the name of trained model')
 
-    parser.add_argument('--pack_loss', type=str, default='pack_loss.pkl', help='the name of the loss file')
+    parser.add_argument('--pack_loss', type=str, default='/kaggle/working/NRMS_new-for-MIND/pack_loss.pkl', help='the name of the loss file')
 
-    parser.add_argument('--ranking_name', type=str, default='prediction.txt', help='the name of the prediction file')
+    parser.add_argument('--ranking_name', type=str, default='/kaggle/working/NRMS_new-for-MIND/prediction.txt', help='the name of the prediction file')
 
     return parser.parse_args()
