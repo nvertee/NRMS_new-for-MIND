@@ -115,7 +115,7 @@ def train_and_evaluate(training_data, validation_data):
     vali_loss_epoch = []
 
     train_data_index = torch.IntTensor(np.array(range(len(training_data))))
-    train_data_index = Data.TensorDataset(data_tensor=train_data_index, target_tensor=train_data_index)
+    train_data_index = Data.TensorDataset(train_data_index, train_data_index)
     train_loader = Data.DataLoader(dataset=train_data_index, batch_size=batch_size, shuffle=True, num_workers=1, drop_last=False)
 
     validate_data_index = torch.IntTensor(np.array(range(len(validation_data))))
