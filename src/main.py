@@ -43,8 +43,8 @@ def pad_masking(bat):
 
 def process_batch_data(behavior_data, index):  # padding and masking
     print(index)
-    index_slice = slice(*index)
-    data = behavior_data[index_slice]
+    print(behavior_data[15541])
+    data = behavior_data[index]
     history = data[:, 1]
     recent = data[:, 2]
     batch_user_history, user_history_mask_selfattn, user_history_mask_attn = pad_masking(history)
