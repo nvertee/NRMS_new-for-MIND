@@ -79,7 +79,7 @@ def train(model, optimizer, loader, train_data, epoch):
     summ = []
     for step, (batch_x, batch_y) in enumerate(loader):  # batch_x: index of batch data
         print('Epoch: ', epoch, ' | Iteration: ', step + 1, '/' + str(num_iterations))
-        processed_data = process_batch_data(train_data, batch_x.numpy())
+        processed_data = process_batch_data(train_data, batch_x)
         batch_user_history = processed_data[0]
         batch_user_short = processed_data[1]
         user_history_mask_selfattn = processed_data[2]
