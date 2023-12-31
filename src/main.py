@@ -119,7 +119,7 @@ def train_and_evaluate(training_data, validation_data):
     train_loader = Data.DataLoader(dataset=train_data_index, batch_size=batch_size, shuffle=True, num_workers=1, drop_last=False)
 
     validate_data_index = torch.IntTensor(np.array(range(len(validation_data))))
-    validate_data_index = Data.TensorDataset(data_tensor=validate_data_index, target_tensor=validate_data_index)
+    validate_data_index = Data.TensorDataset(validate_data_index, validate_data_index)
     vali_loader = Data.DataLoader(dataset=validate_data_index, batch_size=batch_size, shuffle=True, num_workers=1, drop_last=True)
 
     while True:
