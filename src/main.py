@@ -42,6 +42,7 @@ def pad_masking(bat):
 
 
 def process_batch_data(behavior_data, index):  # padding and masking
+    print(index)
     data = behavior_data[index]
     history = data[:, 1]
     recent = data[:, 2]
@@ -79,10 +80,7 @@ def train(model, optimizer, loader, train_data, epoch):
     summ = []
     for step, (batch_x, batch_y) in enumerate(loader):  # batch_x: index of batch data
         print('Epoch: ', epoch, ' | Iteration: ', step + 1, '/' + str(num_iterations))
-        print(batch_x)
-        print(type(batch_x))
-        index = torch.tensor(int(batch_x))
-        processed_data = process_batch_data(train_data, index)
+        processed_data = process_batch_data(train_data, batch_x.numpy())
         batch_user_history = processed_data[0]
         batch_user_short = processed_data[1]
         user_history_mask_selfattn = processed_data[2]
