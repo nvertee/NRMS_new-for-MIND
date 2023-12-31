@@ -56,7 +56,7 @@ def evaluate(model, loader, vali_data, epoch):
     model.eval()
     summ = []
     for step, (batch_x, batch_y) in enumerate(loader):  # batch_x: index of batch data
-        processed_data = process_batch_data(vali_data, batch_x.numpy())
+        processed_data = process_batch_data(vali_data, batch_x)
         batch_user_history = processed_data[0]
         batch_user_short = processed_data[1]
         user_history_mask_selfattn = processed_data[2]
