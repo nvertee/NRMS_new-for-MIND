@@ -221,8 +221,16 @@ if __name__ == '__main__':
             validation_data[i][2] = j[2][-10:]
 
     print("model training")
-    training_data = np.array(training_data)
-    validation_data = np.array(validation_data)
+    flattened_array = []
+    for sublist in training_data:
+        flattened_array.append(sublist)
+
+    training_data = flattened_array
+
+    flattened_array = []
+    for sublist in validation_data:
+        flattened_array.append(sublist)
+    validation_data = flattened_array    
     f.close()
     training_len = len(training_data)
     num_iterations = training_len // batch_size
