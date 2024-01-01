@@ -58,9 +58,10 @@ def process_batch_data(behavior_data, index):  # padding and masking
 
     batch_user_history, user_history_mask_selfattn, user_history_mask_attn = pad_masking(history)
     batch_user_short, user_short_mask_selfattn, user_short_mask_attn = pad_masking(recent)
-    batch_user_valid = []
+    batch_user_valid1 = []
     for row in data:
-        batch_user_valid.append(row[3])
+        batch_user_valid1.append(row[3])
+    batch_user_valid = np.array(batch_user_valid1)
     batch_label = np.zeros(len(index), int)
     return batch_user_history, batch_user_short, user_history_mask_selfattn, user_history_mask_attn, user_short_mask_selfattn, user_short_mask_attn, batch_user_valid, batch_label
 
