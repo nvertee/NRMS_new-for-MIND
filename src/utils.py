@@ -91,7 +91,7 @@ def parse_args():
     parser.add_argument('--final_attn_vector_size', type=int, default=32,
                         help='dim of attn vector for encoding a news')
 
-    parser.add_argument('--batch_size', type=int, default=8,
+    parser.add_argument('--batch_size', type=int, default=4,
                         help='batch size of training')
 
     parser.add_argument('--model_name', type=str, default='/kaggle/working/NRMS_new.pkl', help='the name of trained model')
