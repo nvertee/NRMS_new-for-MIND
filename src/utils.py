@@ -58,7 +58,7 @@ def parse_args():
     parser.add_argument('--newsID_abstractEntityId_conf', type=str, default='/kaggle/input/nrms-dt/newsID_abstractEntityId_conf.pkl',
                         help='newsID_abstractEntityId dictionary')
 
-    parser.add_argument('--num_head_text', type=int, default=8,
+    parser.add_argument('--num_head_text', type=int, default=4,
                         help='num of attention heads for text')
 
     parser.add_argument('--num_head_entity', type=int, default=4,
@@ -82,7 +82,7 @@ def parse_args():
     parser.add_argument('--history_attn_vector_size', type=int, default=16,
                         help='dim of attn vector for encoding history')
 
-    parser.add_argument('--recent_num_head', type=int, default=4,
+    parser.add_argument('--recent_num_head', type=int, default=6,
                         help='num of attention heads for user recent behavior')
 
     parser.add_argument('--recent_attn_vector_size', type=int, default=16,
