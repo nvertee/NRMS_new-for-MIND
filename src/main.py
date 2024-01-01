@@ -46,7 +46,9 @@ def process_batch_data(behavior_data, index):  # padding and masking
     data = []
     for i in range(len(index)):
         print(index[i])
-        data = np.append(data, behavior_data[index[i]])
+        print(behavior_data[index[i]])
+        print(type(behavior_data[index[i]]))
+        data = np.append(behavior_data[index[i]])
     print(data)
     history = data[:, 1]
     recent = data[:, 2]
