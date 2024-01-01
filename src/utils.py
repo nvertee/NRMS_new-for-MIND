@@ -64,7 +64,7 @@ def parse_args():
     parser.add_argument('--num_head_entity', type=int, default=8,
                         help='num of attention heads for entity')
 
-    parser.add_argument('--text_attn_vector_size', type=int, default=200,
+    parser.add_argument('--text_attn_vector_size', type=int, default=128,
                         help='dim of attn vector for encoding title/abstract')
 
     parser.add_argument('--entity_attn_vector_size', type=int, default=64,
@@ -73,16 +73,16 @@ def parse_args():
     parser.add_argument('--news_final_attn_vector_size', type=int, default=48,
                         help='dim of attn vector for encoding a news')
 
-    parser.add_argument('--news_final_embed_size', type=int, default=50,
+    parser.add_argument('--news_final_embed_size', type=int, default=48,
                         help='the size of a piece of embeded news')
 
-    parser.add_argument('--history_num_head', type=int, default=10,
+    parser.add_argument('--history_num_head', type=int, default=8,
                         help='num of attention heads for user histories')
 
     parser.add_argument('--history_attn_vector_size', type=int, default=32,
                         help='dim of attn vector for encoding history')
 
-    parser.add_argument('--recent_num_head', type=int, default=10,
+    parser.add_argument('--recent_num_head', type=int, default=8,
                         help='num of attention heads for user recent behavior')
 
     parser.add_argument('--recent_attn_vector_size', type=int, default=32,
@@ -91,7 +91,7 @@ def parse_args():
     parser.add_argument('--final_attn_vector_size', type=int, default=32,
                         help='dim of attn vector for encoding a news')
 
-    parser.add_argument('--batch_size', type=int, default=16,
+    parser.add_argument('--batch_size', type=int, default=8,
                         help='batch size of training')
 
     parser.add_argument('--model_name', type=str, default='/kaggle/working/NRMS_new.pkl', help='the name of trained model')
