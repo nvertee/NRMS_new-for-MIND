@@ -137,16 +137,14 @@ def train_and_evaluate(training_data, validation_data):
         if evaluation_loss < best_vali_loss:
             best_vali_loss = evaluation_loss
             torch.save(model, model_name)
-        if epoch >= 5:
-            "ealry stopping"
-            near_loss = vali_loss_epoch[-5:]
-            if near_loss == sorted(near_loss):  # loss increases for 5 consecutive epochs
-                print("Best model found! Stop training, saving loss!")
-                loss_train_vali = {'training loss': training_loss_epoch, 'testing loss': vali_loss_epoch}
-                f = open(pack_loss, 'wb')
-                pickle.dump(loss_train_vali, f)
-                f.close()
-                break
+        if epoch >= 1:
+            "early stopping"
+            print("Best model found! Stop training, saving loss!")
+            loss_train_vali = {'training loss': training_loss_epoch, 'testing loss': vali_loss_epoch}
+            f = open(pack_loss, 'wb')
+            pickle.dump(loss_train_vali, f)
+            f.close()
+            break
 
 
 if __name__ == '__main__':
