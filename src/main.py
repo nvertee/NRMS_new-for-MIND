@@ -221,12 +221,8 @@ if __name__ == '__main__':
             validation_data[i][2] = j[2][-10:]
 
     print("model training")
-    print(training_data[1])
-    max_length = max(len(seq) for seq in training_data)
-    padded_data = [seq + [''] * (max_length - len(seq)) for seq in training_data]
-    training_data = np.array(padded_data)
-    #training_data = np.array(training_data)
-    validation_data = np.array(validation_data)
+    training_data = np.array(training_data, dtype=object)
+    validation_data = np.array(validation_data, dtype=object)
     f.close()
     training_len = len(training_data)
     num_iterations = training_len // batch_size
