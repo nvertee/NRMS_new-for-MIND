@@ -223,7 +223,7 @@ if __name__ == '__main__':
     print("model training")
     max_length = max(len(seq) for seq in training_data)
     padded_data = [seq + [0] * (max_length - len(seq)) for seq in training_data]
-    training_data = np.array(padded_data)
+    training_data = np.vstack(padded_data)
     #training_data = np.array(training_data)
     validation_data = np.array(validation_data)
     f.close()
