@@ -221,9 +221,10 @@ if __name__ == '__main__':
             validation_data[i][2] = j[2][-10:]
 
     print("model training")
+    print(training_data[1])
     max_length = max(len(seq) for seq in training_data)
-    padded_data = [seq + [0] * (max_length - len(seq)) for seq in training_data]
-    training_data = np.vstack(padded_data)
+    padded_data = [seq + [''] * (max_length - len(seq)) for seq in training_data]
+    training_data = np.array(padded_data)
     #training_data = np.array(training_data)
     validation_data = np.array(validation_data)
     f.close()
