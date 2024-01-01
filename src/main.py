@@ -49,7 +49,7 @@ def process_batch_data(behavior_data, index):  # padding and masking
         print(behavior_data[index[i]])
         print(type(behavior_data[index[i]]))
         data.append(behavior_data[index[i]])
-    print(data)
+    print(type(data))
     history = data[:, 1]
     recent = data[:, 2]
     batch_user_history, user_history_mask_selfattn, user_history_mask_attn = pad_masking(history)
@@ -228,6 +228,7 @@ if __name__ == '__main__':
             validation_data[i][2] = j[2][-10:]
 
     print("model training")
+    
     flattened_array = []
     for sublist in training_data:
         flattened_array.append(sublist)
