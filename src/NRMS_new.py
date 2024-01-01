@@ -14,7 +14,7 @@ def attention(query, key, value, mask=None, dropout=None):
     "Compute 'Scaled Dot Product Attention'"
     d_k = query.size(-1)
     scores = torch.matmul(query, key.transpose(-2, -1)) / math.sqrt(d_k)
-    scores = scores.cpu()
+    scores = scores.cuda()
     if mask is not None:
         scores = scores.masked_fill(Variable(mask) == 0, -1e9).cuda()
 
