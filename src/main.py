@@ -68,8 +68,8 @@ def evaluate(model, loader, vali_data, epoch):
         # compute output
         batch_predict = model(batch_user_history, batch_user_short, user_history_mask_selfattn, user_history_mask_attn, user_short_mask_selfattn, user_short_mask_attn, batch_user_valid, newsID_categoryID, newsID_subcategoryID, newsID_TitleWordID, newsID_AbstractWordID, newsID_titleEntityId_conf, newsID_abstractEntityId_conf).cuda()
         loss = model.loss(batch_predict, batch_label).cuda()
-        print('Epoch ' + str(epoch) + ': the ' + str(step + 1) + ' /' + str(num_iterations_vali) + '-th validation: loss: ' + str(loss.data[0]) + '\n')
-        summ.append(loss.data[0])
+        print('Epoch ' + str(epoch) + ': the ' + str(step + 1) + ' /' + str(num_iterations_vali) + '-th validation: loss: ' + str(loss.item()) + '\n')
+        summ.append(loss.item())
     average_loss = np.average(summ)
     return average_loss
 
@@ -93,10 +93,10 @@ def train(model, optimizer, loader, train_data, epoch):
         optimizer.zero_grad()
         batch_predict = model(batch_user_history, batch_user_short, user_history_mask_selfattn, user_history_mask_attn, user_short_mask_selfattn, user_short_mask_attn, batch_user_valid, newsID_categoryID, newsID_subcategoryID, newsID_TitleWordID, newsID_AbstractWordID, newsID_titleEntityId_conf, newsID_abstractEntityId_conf).cuda()
         loss = model.loss(batch_predict, batch_label).cuda()
-        print('Epoch ' + str(epoch) + ': ' + 'The ' + str(step + 1) + '/' + str(num_iterations) + '-th interation: loss: ' + str(loss.data[0]) + '\n')
+        print('Epoch ' + str(epoch) + ': ' + 'The ' + str(step + 1) + '/' + str(num_iterations) + '-th interation: loss: ' + str(loss.item()) + '\n')
         loss.backward()
         optimizer.step()
-        summ.append(loss.data[0])
+        summ.append(loss.item())
     average_loss = np.mean(summ)
     return average_loss
 
@@ -115,11 +115,11 @@ def train_and_evaluate(training_data, validation_data):
     vali_loss_epoch = []
 
     train_data_index = torch.IntTensor(np.array(range(len(training_data))))
-    train_data_index = Data.TensorDataset(data_tensor=train_data_index, target_tensor=train_data_index)
+    train_data_index = Data.TensorDataset(train_data_index, train_data_index)
     train_loader = Data.DataLoader(dataset=train_data_index, batch_size=batch_size, shuffle=True, num_workers=16, drop_last=False)
 
     validate_data_index = torch.IntTensor(np.array(range(len(validation_data))))
-    validate_data_index = Data.TensorDataset(data_tensor=validate_data_index, target_tensor=validate_data_index)
+    validate_data_index = Data.TensorDataset(validate_data_index, validate_data_index)
     vali_loader = Data.DataLoader(dataset=validate_data_index, batch_size=batch_size, shuffle=True, num_workers=16, drop_last=True)
 
     while True:
@@ -379,10 +379,10 @@ if __name__ == '__main__':
 #         if evaluation_loss < best_vali_loss:
 #             best_vali_loss = evaluation_loss
 #             torch.save(model, model_name)
-#         if epoch >= 5:
+#         if epoch >= 2:
 #             "ealry stopping"
-#             near_loss = vali_loss_epoch[-5:]
-#             if near_loss == sorted(near_loss):  # loss increases for 5 consecutive epochs
+#             near_loss = vali_loss_epoch[-2:]
+#             if near_loss == sorted(near_loss):  # loss increases for 2 consecutive epochs
 #                 print("Best model found! Stop training, saving loss!")
 #                 loss_train_vali = {'training loss': training_loss_epoch, 'testing loss': vali_loss_epoch}
 #                 f = open(pack_loss, 'wb')
