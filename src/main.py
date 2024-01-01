@@ -110,7 +110,7 @@ def train(model, optimizer, loader, train_data, epoch):
         print('Epoch {}: The {}/{}-th iteration: loss: {}\n'.format(epoch, step + 1, num_iterations, loss.item()))
         loss.backward()
         optimizer.step()
-        summ.append(loss.data[0])
+        summ.append(loss.item())
     average_loss = np.mean(summ)
     return average_loss
 
