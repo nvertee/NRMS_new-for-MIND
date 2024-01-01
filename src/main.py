@@ -107,7 +107,7 @@ def train(model, optimizer, loader, train_data, epoch):
         optimizer.zero_grad()
         batch_predict = model(batch_user_history, batch_user_short, user_history_mask_selfattn, user_history_mask_attn, user_short_mask_selfattn, user_short_mask_attn, batch_user_valid, newsID_categoryID, newsID_subcategoryID, newsID_TitleWordID, newsID_AbstractWordID, newsID_titleEntityId_conf, newsID_abstractEntityId_conf).cuda()
         loss = model.loss(batch_predict, batch_label).cuda()
-        print('Epoch ' + str(epoch) + ': ' + 'The ' + str(step + 1) + '/' + str(num_iterations) + '-th interation: loss: ' + str(loss.data[0]) + '\n')
+        print('Epoch {}: The {}/{}-th iteration: loss: {}\n'.format(epoch, step + 1, num_iterations, loss.item()))
         loss.backward()
         optimizer.step()
         summ.append(loss.data[0])
