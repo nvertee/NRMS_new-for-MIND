@@ -78,7 +78,8 @@ def train(model, optimizer, loader, train_data, epoch):
     model.train()
     summ = []
     for step, (batch_x, batch_y) in enumerate(loader):  # batch_x: index of batch data
-        torch.cuda.empty_cache() 
+        if (step%10 == 0):
+            torch.cuda.empty_cache() 
         print('Epoch: ', epoch, ' | Iteration: ', step + 1, '/' + str(num_iterations))
         processed_data = process_batch_data(train_data, batch_x.numpy())
         batch_user_history = processed_data[0]
