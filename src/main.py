@@ -82,7 +82,7 @@ def evaluate(model, loader, vali_data, epoch):
         # compute output
         batch_predict = model(batch_user_history, batch_user_short, user_history_mask_selfattn, user_history_mask_attn, user_short_mask_selfattn, user_short_mask_attn, batch_user_valid, newsID_categoryID, newsID_subcategoryID, newsID_TitleWordID, newsID_AbstractWordID, newsID_titleEntityId_conf, newsID_abstractEntityId_conf).cuda()
         loss = model.loss(batch_predict, batch_label).cuda()
-        print('Epoch ' + str(epoch) + ': the ' + str(step + 1) + ' /' + str(num_iterations_vali) + '-th validation: loss: ' + str(loss.data[0]) + '\n')
+        print('Epoch {}: The {}/{}-th iteration: loss: {}\n'.format(epoch, step + 1, num_iterations, loss.item()))
         summ.append(loss.data[0])
     average_loss = np.average(summ)
     return average_loss
